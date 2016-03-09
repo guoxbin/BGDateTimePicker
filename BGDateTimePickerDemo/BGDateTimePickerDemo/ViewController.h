@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGDateTimePicker.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<BGDateTimePickerDelegate>
 
+@property (nonatomic, strong) UILabel *label;
 
 @end
 

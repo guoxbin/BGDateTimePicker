@@ -105,16 +105,9 @@ const NSInteger ComponentMinute = 6;
     
     _minuteInterval = self.minuteInterval == 0 ? DefaultMinuteInterval : self.minuteInterval;
     
-    //adjust date
-    
-    NSInteger time = [_date timeIntervalSince1970];
-    NSInteger intervalInS = _minuteInterval * 60;
-    
-    time = (time/intervalInS)*intervalInS;
-    
-    _date = [NSDate dateWithTimeIntervalSince1970:time];
-    
-    //adjust date finish
+    _date = [self getTrimedDate:_date];
+    _minimumDate = [self getTrimedDate:_minimumDate];
+    _maximumDate = [self getTrimedDate:_maximumDate];
     
     self.delegate = self;
     self.dataSource = self;
@@ -280,6 +273,8 @@ const NSInteger ComponentMinute = 6;
     }
     
     NSLog(@"date updated date=%@", self.date);
+    
+    [self.pickerDelegate dateChanged:self.date];
     
 }
 
@@ -481,6 +476,18 @@ const NSInteger ComponentMinute = 6;
     }
 
     return date;
+}
+
+- (NSDate *)getTrimedDate:(NSDate *)date{
+    
+    NSInteger time = [date timeIntervalSince1970];
+    NSInteger intervalInS = _minuteInterval * 60;
+    
+    time = (time/intervalInS)*intervalInS;
+    
+    NSDate *trimedDate = [NSDate dateWithTimeIntervalSince1970:time];
+    
+    return trimedDate;
 }
 
 

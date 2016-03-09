@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BGDateTimePickerDelegate <NSObject>
+
+- (void)dateChanged:(NSDate *)date;
+
+@end
+
 @interface BGDateTimePicker : UIPickerView<UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (nonatomic, strong) id<BGDateTimePickerDelegate> pickerDelegate;
 
 @property (nonatomic, strong) NSDate *date;        // default is current date when picker created.
 
