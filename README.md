@@ -1,6 +1,8 @@
 # BGDateTimePicker
 A date time picker which can choose year, month, day, hour, minute separately
 
+![ScreenShot](https://raw.github.com/guoxbin/BGDateTimePicker/master/demo.png)
+
 ## Feature
 1. setting min date
 1. setting max date
